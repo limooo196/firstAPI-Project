@@ -73,8 +73,8 @@ To start the FastAPI server, run the following command:
 uvicorn main:app --reload
 ```
 
-### Summary of Validations:
 
+Summary of Validations:
 1. **Name**:
     
     - Must contain only letters and spaces.
@@ -95,6 +95,9 @@ uvicorn main:app --reload
     - Ensure that the user with the provided email doesn’t already exist (`POST`).
     - Prevent users from updating their email (`PUT`).
     - Handle cases where the user does not exist (`GET`, `PUT`, `DELETE`).
+  
+
+
 
 Dependencies
 FastAPI: Web framework for building APIs.
