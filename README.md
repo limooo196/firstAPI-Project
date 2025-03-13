@@ -52,10 +52,15 @@ pip install -r requirements.txt
 
 
 Firebase Setup
+
 1.Set up Firebase and enable Firestore.
+
 2. Create a Firebase service account and download the private key as a .json file.
+3. 
 3.Place the Firebase credentials .json file in the project directory (e.g., firebase_credentials.json).
-4. Update the path to your Firebase credentials in the code:
+
+5. Update the path to your Firebase credentials in the code:
+
 ```
 cred = credentials.Certificate("./firebase_credentials.json")
 ```
@@ -68,6 +73,28 @@ To start the FastAPI server, run the following command:
 uvicorn main:app --reload
 ```
 
+### Summary of Validations:
+
+1. **Name**:
+    
+    - Must contain only letters and spaces.
+    - Minimum length: 1, Maximum length: 50.
+2. **Email**:
+    
+    - Must be in a valid email format.
+    - Leading/trailing spaces are trimmed.
+3. **Phone**:
+    
+    - Must follow international phone number format (e.g., `+6281234567890`).
+    - Must have at least 10 digits.
+4. **Timestamps**:
+    
+    - `created_at` and `updated_at` are automatically set by the server and cannot be updated by the user.
+5. **Request-Level Validations**:
+    
+    - Ensure that the user with the provided email doesn’t already exist (`POST`).
+    - Prevent users from updating their email (`PUT`).
+    - Handle cases where the user does not exist (`GET`, `PUT`, `DELETE`).
 
 Dependencies
 FastAPI: Web framework for building APIs.
